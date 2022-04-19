@@ -14,33 +14,7 @@ use Illuminate\Support\Facades\Mail;
 class adminController extends Controller
 {
 
-    public function dashboard()
-    {
-        $doctors = DB::table('users')->where('type', 'doctor')->get();
-        $patinents = DB::table('users')->where('type', 'patient')->get();
-        $receptionists = DB::table('users')->where('type', 'receptionist')->get();
-
-        $doctor = 0;
-        $patinent = 0;
-        $receptionist = 0;
-
-        //doctor
-        foreach ($doctors as $num) {
-            $doctor += 1;
-        }
-
-        //patient
-        foreach ($patinents as $num) {
-            $patinent += 1;
-        }
-
-        //receptionist
-        foreach ($receptionists as $num) {
-            $receptionist += 1;
-        }
-
-        return view('admin.dashboard', compact('doctor', 'patinent', 'receptionist'));
-    }
+   
 
     //api
     //ALL doctor
@@ -50,7 +24,7 @@ class adminController extends Controller
 
         if ($result) {
              return response()->json($result, 200);
-            
+
         }
     }
     //ALL doctor
@@ -183,7 +157,7 @@ class adminController extends Controller
 
       if ($result) {
            return response()->json($result, 200);
-          
+
       }
   }
    //single receptionist
@@ -195,7 +169,7 @@ class adminController extends Controller
            return response()->json($result, 200);
        }
    }
-   
+
 
 
 
@@ -249,7 +223,7 @@ class adminController extends Controller
                 'name' => 'required',
 
                 'email' => 'required',
-               
+
                 ]
         );
         if ($validator->fails()) {
@@ -261,7 +235,7 @@ class adminController extends Controller
 
             $receptionst->email = $req->email;
 
-           
+
 
             $receptionst->update();
 
@@ -294,7 +268,7 @@ class adminController extends Controller
                 'name' => 'required',
 
                 'email' => 'required',
-                 
+
 
 
             ]
@@ -310,7 +284,7 @@ class adminController extends Controller
 
             $admin->email = $req->email;
 
-           
+
 
             $admin->update();
 

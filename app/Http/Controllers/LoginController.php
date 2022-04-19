@@ -32,26 +32,28 @@ class LoginController extends Controller {
 
                     ]);
                 }
-                // else if ( $type == "receptionist" ) {
-                //     // $req->session()->put( 'uname', $username );
-                //     // $req->session()->put( 'type', $type );
-                //     // $req->session()->put( 'password', $req->password );
-                //     // $req->session()->put( 'id', $id );
+                else if ( $result->type == "doctor" ) {
 
-                //     return redirect( '/reception/dashboard' );
+                    return response()->json([
+                        'status' => 'success',
+                        'message' => 'Login Successfully',
+                        'id' => $result->id,
+                        'name' => $result->name,
+                        'email' => $result->email,
+                        'type' => $result->type,
+                        'username' => $result->username,
+                        'dcid' => $result->dcid,
 
-                //     //admin
-                // }
-                // else if ( $type == "admin" ) {
-                //     $req->session()->put( 'uname', $username );
-                //     $req->session()->put( 'type', $type );
-                //     $req->session()->put( 'password', $req->password );
-                //     $req->session()->put( 'id', $id );
-                //     $req->session()->put( 'image', $image );
 
-                //     return redirect()->route( 'admin.dashboard' );
-                // }
+                    ]);
+                }
+                else {
+                    return response()->json([
+                        'status' => 'Not Found',
+                        'message' => 'User Not  Found',
+                    ]);
 
+                }
 
 
         }
