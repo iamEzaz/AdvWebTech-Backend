@@ -86,4 +86,38 @@ class DoctorControler extends Controller
              return response()->json(["msg" => "notfound"], 404);
          }
     }
+    //update status
+    public function Updateaptstatus(Request $req)
+    {
+        $apt = Appointment::where('id', $req->id)->first();
+
+
+        $apt->status = 'done';
+
+        $apt->update();
+
+            if ($apt->update()) {
+              return response()->json([
+                    'success' => 'Status  update Successful.!',
+                ]);
+            } else {
+                return response()->json([
+                    'failed' => 'Status  update failed!',
+                ]);
+            }
+        }
+//al patient
+public function Allpatient()
+{
+    $result = Users::where('type', 'patient')->get();
+
+    if ($result) {
+        return response()->json($result, 200);
+    }
 }
+
+
+
+
+    }
+

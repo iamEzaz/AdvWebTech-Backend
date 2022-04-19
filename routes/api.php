@@ -29,6 +29,7 @@ Route::middleware( 'auth:api' )->get( '/user', function ( Request $request ) {
     Route::post( '/deletepatient/{id}', [adminController::class,'deletepatient'] );
     //add doctor
     Route::post( '/adddoctor', [adminController::class,'Adddoctor'] );
+    Route::get( '/allappointment', [adminController::class,'Allappointment'] );
     Route::post( '/addreceptionist', [adminController::class,'AddReciptionist'] );
     Route::get( '/allreceptionist', [adminController::class,'allreceptionist'] );
     Route::get( '/singlereceptionist/{id}', [adminController::class,'Singlereceptionist'] );
@@ -51,3 +52,5 @@ Route::get( '/doctorprofile/{id}', [DoctorControler::class,'Doctoprofile'] );
 Route::post( '/updatedoctorprofile', [DoctorControler::class,'Updatedoctorprfile'] );
 Route::get( '/doctorappointments/{id}', [DoctorControler::class,'Appointment'] );
 Route::post( '/deleteappointment/{id}', [DoctorControler::class,'DeleteAppointment'] );
+Route::post( '/updateaptstatus', [DoctorControler::class,'Updateaptstatus'] );
+Route::get( '/allpatientdc', [adminController::class,'Allpatient'] );

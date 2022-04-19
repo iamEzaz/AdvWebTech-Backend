@@ -18,7 +18,7 @@ class LoginController extends Controller {
         if ( $result  )
         {
 
-                if ( $result->type == "doctor" ) {
+                if ( $result->type == "admin" ) {
 
                     return response()->json([
                         'status' => 'success',
